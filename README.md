@@ -1,23 +1,73 @@
 Description
-====
+===========
 
-Installs packages and configuration for OpenStack Swift
+This cookbook installs the OpenStack Compute service **Swift** as part of the OpenStack **Essex** reference deployment Chef for OpenStack. The http://github.com/opscode/openstack-chef-repo contains documentation for using this cookbook in the context of a full OpenStack deployment. Swift is installed from packages.
+
+http://swift.openstack.org
 
 Requirements
-====
-
-Client:
- * Ubuntu 11.04
- * Fedora-17 (Soon)
+============
 
 Chef:
  * 0.10.8
 
-Other variants of Ubuntu and Fedora may work, something crazy like
-Solaris probably will not.  YMMV, objects in mirror, etc.
+Other variants of Ubuntu and Fedora may work, something crazy like Solaris probably will not. YMMV, objects in mirror, etc.
+
+Platforms
+---------
+
+ * Ubuntu 11.04
+ * Fedora-17 (Soon)
+
+Cookbooks
+---------
+
+The following cookbooks are dependencies:
+
+ * apt
+ * dsh
+ * keystone
+ * osops-utils (github.com/osops/osops-utils) - used for finding interfaces on particular networks
+ * sysctl
+
+Recipes
+=======
+
+account-server
+--------------
+
+common
+------
+
+container-server
+----------------
+
+disks
+-----
+
+management-server
+-----------------
+
+memcached
+---------
+
+object-server
+-------------
+
+proxy-server
+------------
+
+ring-repo
+---------
+
+rsync
+-----
+
+storage-common
+--------------
 
 Attributes
-====
+==========
 
  * node[:swift][:authmode] - "swauth" or "keystone" (default "swauth")
 
@@ -80,14 +130,8 @@ interfaces on particular devices.
    that the proxy listens to, or the load balancer for proxies listens
    on
 
-Deps
-====
-
- * osops-utils (github.com/osops/osops-utils) - used for finding
-   interfaces on particular networks
-
 Roles
-====
+=====
 
  * swift-account-server - storage node for account data
  * swift-container-server - storage node for container data
@@ -164,8 +208,11 @@ License and Author
 ====
 
 Author:: Ron Pedde (<ron.pedde@rackspace.com>)
-Author::  Will Kelly (<will.kelly@rackspace.com>)
-Copyright:: 2012, Rackspace Hosting
+Author:: Will Kelly (<will.kelly@rackspace.com>)
+Author:: Matt Ray (<matt@opscode.com>)
+
+Copyright 2012 Rackspace Hosting
+Copyright 2012 Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
