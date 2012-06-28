@@ -1,6 +1,7 @@
-maintainer        "Rackspace Hosting, Inc."
+maintainer        "Opscode, Inc."
+maintainer_email  "matt@opscode.com"
+description       "The OpenStack Object Storage service Swift."
 license           "Apache 2.0"
-description       "Installs and configures Openstack Swift"
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           "1.0.2"
 recipe            "swift::account-server", "Installs the swift account server"
@@ -12,6 +13,6 @@ recipe            "swift::container-server", "Installs the swift container serve
   supports os
 end
 
-%w{osops-utils dsh keystone collectd-graphite apt monitoring sysctl}.each do |dep|
+%w{osops-utils dsh keystone apt sysctl}.each do |dep|
   depends dep
 end
